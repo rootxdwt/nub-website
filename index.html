@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<?xml version="1.0" encoding="utf-8"?>
+<head>
+    <title>Alpha X Development</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+
+    }
+    .hidden {
+        display: none;
+    }
+    header {
+        width: 100%;
+        margin: 0;
+        padding: auto;
+        height: 50px;
+        background-color: #ffffff;
+        box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
+        animation: show 0.7s;
+        -webkit-animation-timing-function: ease-in-out;
+        animation-timing-function: ease-in-out;
+        position: fixed;
+        transform: translateY(0px);
+        transition: all 0.5s ease-in-out;
+        display: flex;
+        flex-direction: row;
+    }
+    header.transparent {
+        transform: translateY(-58px);
+    }
+    #mainarea {
+        padding-top: 0px;
+        justify-content: center;
+    }
+    .blurlayer {
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: fixed;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(10px);
+        background-color: rgba(0, 0, 0, 0.3);
+        animation: blurshow 0.5s;
+    }
+    @keyframes blurshow {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 100;
+        }
+    }
+    .blurlayer.show {
+        display: block;
+        display: flex;
+        flex-direction:row;
+    }
+    .scriptlayer {
+        font-family: 'Noto Sans', sans-serif;
+        width: 70%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        transition: all 0.5s ease-in-out;
+        border-radius: 2em;
+        padding: 30px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .firstcard {
+        font-family: 'Noto Sans', sans-serif;
+        color: #ffffff;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 100%);
+    }
+    .area {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column; 
+    }
+    #logocont {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+        transition: all 0.3s ease-in-out;
+        margin-left: 20px;
+        width: 50px;
+    }
+    .st0{
+            stroke-dasharray:2000;
+            stroke-dashoffset: 2000;
+            fill:#000;
+            stroke:#000000;
+            stroke-width:0;
+            stroke-miterlimit:10;
+            animation: dash 3s ease-in;
+            transition: all 0.3s ease-in-out;
+            }
+
+    .st0.active {
+        fill: #000000;
+        stroke: #000000;
+    }
+    .st1 {
+		fill:none;
+		stroke:#000000;
+		stroke-width:4;
+		stroke-miterlimit:10;
+		}
+
+    .btn {
+        margin-top: 10px;
+        padding: 10px 20px;
+        border-radius: 2em;
+        color: #ffffff;
+        border: solid #ffffff 2px;
+        background-color: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .btn:focus {
+        outline: none;
+    }
+    .btn:hover {
+        color: #000000;
+        background-color: #ffffff;
+    }
+    .thirdcard {
+        width: 100%;
+        background-color: #8eb5bf	;
+        height: 400px;
+    }
+    a {
+        text-decoration: none;
+        cursor: pointer;
+        
+    }
+    a#btn {
+        padding: 5px 15px;
+        border-radius: 2em;
+        background-color: #000000;
+        color: #ffffff;
+        transition: all 0.3s ease-in-out;
+    }
+    a#btn:hover {
+        padding: 5px 15px;
+        border-radius: 2em;
+        background-color: #a9a9a9;
+        color: #000000;
+    }
+    footer {
+        font-family: 'Noto Sans', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        width: 100%;
+        height: 100px;
+        background-color: #a9a9a9;
+        margin-bottom: 0;
+    }
+    #iconcont {
+        width: 60px;
+    }
+    .secondcard {
+        margin-top: 0;
+        width: 100%;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Noto Sans', sans-serif;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        color: #000000;
+        width: 100%;
+        
+    }
+    .img {
+        width: 100%;
+        height: 100px;
+        margin: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #000000;
+
+    }
+    .imgcont {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 60px;
+    }
+    .loginbtn {
+        padding: 5px 10px;
+        border: solid 2px #000000;
+        border-radius: 2em;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-right: 20px;
+        cursor: pointer;
+        background-color: transparent;
+    }
+    .oauthbtn {
+        padding: 8px 15px;
+        background-color: #23272A;
+        color: #ffffff;
+        border-radius: 2em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        cursor: pointer;
+        align-items: center;
+    }
+    .scnh2 {
+        margin: 50px;
+    }
+    .suggestarea {
+        font-family: 'Noto Sans', sans-serif;
+        width: 100%;
+        padding-top: 30px;
+        padding-bottom: 60px;
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 100%);
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .suggestarea input[type="text"] {
+        padding: 10px 10px;
+        border-top-left-radius: 2em;
+        border-bottom-left-radius: 2em;
+        background-color: transparent;
+        border-top: 2px solid #ffffff;
+        border-bottom: 2px solid #ffffff;
+        border-left: 2px solid #ffffff;
+        border-right: 0px;
+        color: #ffffff;
+    }
+    .suggestarea.container {
+        display: flex;
+        flex-direction: row;
+    }
+    .suggestarea input[type="text"]:focus {
+        outline: none;
+    }
+    .suggestarea input[type="text"]::placeholder {
+        color: #ffffff;
+    }
+    .suggestarea input[type="text"]::-ms-input-placeholder {
+        color: #ffffff;
+    }
+    .suggestarea input[type="text"]:-ms-input-placeholder {
+        color: #ffffff;
+    }
+    .suggestarea button {
+        border-top-right-radius: 2em;
+        border-bottom-right-radius: 2em;
+        padding: 10px 10px;
+        margin-left: 0;
+        background-color: transparent;
+        color: #ffffff;
+        border-top: 2px solid #ffffff;
+        border-bottom: 2px solid #ffffff;
+        border-left: 2px solid #ffffff;
+        border-right: 2px solid #ffffff;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+    .suggestarea button:hover {
+        background-color: #ffffff;
+        color: #000000;
+    }
+    .suggestarea button:focus {
+        outline: none;
+    }
+    .code {
+        padding: 10px;
+        word-break:break-all;
+        background-color: #eee;
+        border-radius: 3px;
+        font-family: courier, monospace;
+    }
+    @keyframes show {
+        0% {
+            margin-top: -100px;
+        }
+        80% {
+            margin-top: 0;
+        }
+    }
+        @keyframes dash {
+            0% {
+                stroke-dashoffset: 2000;
+                fill-opacity: 0;
+                stroke-width:20;
+            }
+            60% {
+                stroke-width: 0;
+                stroke-dashoffset: 0;
+            }
+            90% {
+                fill-opacity: 1;
+            }
+    }
+    @media (min-width: 800px) {
+        header {
+            height: 70px;
+        }
+        #logocont {
+        width: 100px;
+        transition: all 0.5s ease-in-out;
+        width: 70px;
+        }
+
+        #logocont.active {
+            width: 50px;
+        }
+
+        header.transparent {
+        transform: translateY(0px);
+        backdrop-filter: blur(3px);
+        background-color:rgba(255, 255, 255, 0.2);
+        height: 50px;
+        }
+        
+
+        .firstcard {
+            padding-top: 30px;
+        }
+
+        .scriptlayer {
+            width: 30%;
+        }
+        
+        .st0.active {
+            fill: #ffffff;
+            stroke: #ffffff;
+        }
+        .loginbtn {
+            padding: 10px 20px;
+            transition: all 0.5s ease-in-out;
+        }
+        .loginbtn.transparent {
+            border: solid 2px #ffffff;
+            color: #ffffff;
+            padding: 8px 15px;
+        }
+        .oauthbtn {
+            padding: 8px 15px;
+        }
+        .imgcont {
+        display: flex;
+        flex-direction: row;
+    }
+    .suggestarea button {
+        padding: 10px 20px;
+    }
+    .suggestarea input[type="text"] {
+        padding: 10px 20px;
+    }
+    }
+</style>
+<script>
+    var scrollp = 0;
+    console.log(scroll);
+    window.addEventListener("scroll", (event) => {
+    let scroll = this.scrollY;
+    console.log(scroll);
+    if ((document.body.getBoundingClientRect()).top > scrollp) {
+        document.querySelector("header").classList.remove("transparent");
+        document.getElementById("logocont").classList.remove("active");
+        document.getElementById('path').classList.remove("active");
+        document.getElementById('xpath').classList.remove("active");
+        document.getElementById('loginbtn').classList.remove("transparent");
+    }
+    else {
+        document.querySelector("header").classList.add("transparent");
+        document.getElementById("logocont").classList.add("active");
+        document.getElementById('path').classList.add("active");
+        document.getElementById('xpath').classList.add("active");
+        document.getElementById('loginbtn').classList.add("transparent");
+    }
+	scrollp = (document.body.getBoundingClientRect()).top;
+});
+var allowedlet = [".", "!", "?", "a", "b", "c", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m" ,"n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", ",", " "];
+function winsug(a) {
+
+}
+function showoverlay(a) {
+    document.getElementById('blur').classList.add('show');
+    //document.querySelector('body').style = "overflow: hidden;";
+    document.querySelector("header").classList.add("hidden");
+    if(a == "getalphax") {
+        document.getElementById('overlaymain').innerHTML = "Please Agree to our <a href='./tos.html'>terms of service</a> to continue";
+        document.getElementById('toscheck').style = "";
+    }else if(a == "login") {
+        document.getElementById('overlaymain').innerHTML = "<div class='oauthbtn'><img src='https://discord.com/assets/1c8a54f25d101bdc607cec7228247a9a.svg' width='25px'>Continue</div>";
+        document.getElementById('toscheck').style = "display: none;";
+    }
+}
+function hide() {
+    document.getElementById('blur').classList.remove('show');
+    document.querySelector("header").classList.remove("hidden");
+    //document.querySelector('body').style = "overflow: auto;";
+}
+function change(aa) {
+    if(aa.checked == true){
+        document.getElementById('btn').innerHTML = "Continue";
+    }else{
+        document.getElementById('btn').innerHTML = "Cancel";
+   }
+}
+function fclick() {
+    var inn = document.getElementById('btn').innerHTML;
+    if(inn == "Continue") {
+        document.getElementById('overlaymain').innerHTML = "Here is your script. Sharing This Script Will Result A Blacklist<br><br><div class='code' id='code' onclick='copy()'>getgenv.Key()='AlphaXV2_aaaaaaaaaaaaaaaaaaa'<br>loadstring(game:HttpGetAsync('https://alpha1004.tech/scripts/AlphaX.lua'))()</div><textarea id='tmp' style='display: none;'></textarea>";
+        document.getElementById('toscheck').style = "display: none;"
+        document.getElementById('btn').innerHTML = "Cancel"
+    }
+    else if(inn == "Cancel"){
+        hide();
+    }
+}
+function copy() {
+    var divtxt = document.getElementById('code').innerHTML;
+    var tmp = document.getElementById('tmp');
+    tmp.value = divtxt;
+    tmp.focus();
+    tmp.select();
+    document.execCommand("copy");
+    alert("Copied to clipboard");
+}
+</script>
+</head>
+
+<body>
+    <div class="blurlayer" id="blur">
+        <div class="scriptlayer">
+            <p><b id="overlaymain"></b></p>
+            <p id="toscheck"><input type="checkbox" onchange="change(this)">I Agree</p><a id="btn" onclick="fclick()">Cancel</a>
+        </div>
+    </div>
+    <header>
+        <div id="logocont">
+            <?xml version="1.0" encoding="utf-8"?>
+                <svg version="1.1" id="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                    y="0px" viewBox="0 0 720 720" style="enable-background:new 0 0 720 720;" xml:space="preserve">
+                <g>
+                    <path class="st0" id="path" d="M308.43,171.43h87l119,370.5h-77.5l-26-95h-120l-26,95h-75L308.43,171.43z M306.93,389.43h88l-11-40.5
+                        c-11.5-38.5-21.5-81-32-121h-2.5c-9.5,40.5-20.5,82.5-31.5,121L306.93,389.43z"/>
+                </g>
+                <g>
+                    <path class="st0" id="xpath" d="M472.2,173.4l-27.69-50.98h23.29l10.51,21.73c2.55,4.97,4.69,10.08,7.81,16.61h0.71
+                        c2.55-6.53,4.69-11.64,6.96-16.61l9.94-21.73h22.15l-27.69,51.97l29.54,53.25h-23.29l-11.79-23.29c-2.7-5.4-5.11-10.93-8.24-17.32
+                        h-0.57c-2.56,6.39-5.11,11.93-7.67,17.32l-11.22,23.29h-22.29L472.2,173.4z"/>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                </svg>
+        </div>
+        <button class="loginbtn" id="loginbtn" onclick="showoverlay('login')">Login</button>
+    </header>
+    <div id="mainarea">
+
+        <div class="firstcard"><div class="area"><h2>Entity, Comin soon</h2><b>Making Best Scripts Since 2020</b><button class="btn" onclick="showoverlay('getalphax')">Get Entity Hub Now</button></div></div>
+        <div class="secondcard"><h2 class="scnh2">Features</h2><div class="imgcont">
+            <div class="img"><b>Completly Free, with NO ads</b><br>Entity hub will remain free FOREVER</div>
+            <div class="img"><b>Supporting 50+ Popular Games</b><br>Lots of supported games with frequent update</div>
+            <div class="img"><b>24/7 Active Support</b><br>Active, Friendly Support Team</div>
+            </div>
+            </div>
+        <div class="suggestarea"><h2 class="scnh2">Suggest</h2><div class="container"><input type="text" placeholder="Suggest Anything" onchange="winsug(this)"><button>Suggest</button></div></div>
+        <footer>&copy; Alpha X Development</footer>
+
+    </div>
+</body>
